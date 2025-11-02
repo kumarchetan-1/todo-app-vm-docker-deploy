@@ -1,5 +1,9 @@
 # Turborepo starter
 
+[Golang Cohort Notion](https://petal-estimate-4e9.notion.site/Golang-cohort-1257dfd1073580238258fe25973c319b)
+
+[CI/CD monorepo Vm Docker](https://petal-estimate-4e9.notion.site/Context-19c7dfd10735804bb438fedcd20d3628)
+
 This Turborepo starter is maintained by the Turborepo core team.
 
 ## Using this example

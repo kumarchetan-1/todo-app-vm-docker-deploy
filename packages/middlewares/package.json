@@ -1,0 +1,23 @@
+{
+  "name": "@repo/middlewares",
+  "module": "index.ts",
+  "type": "module",
+  "private": true,
+  "exports": {
+    ".": "./index.ts"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "@types/express": "^5.0.5",
+    "@types/jsonwebtoken": "^9.0.10",
+    "@repo/typescript-config": "workspace:*"
+  },
+  "peerDependencies": {
+    "express": "^5.1.0",
+    "typescript": "^5"
+  },
+  "dependencies": {
+    "jsonwebtoken": "^9.0.2",
+    "jwt": "^0.2.0"
+  }
+}
