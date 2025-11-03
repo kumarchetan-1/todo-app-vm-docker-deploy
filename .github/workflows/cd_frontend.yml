@@ -1,5 +1,5 @@
 
-name: Deployment the backend
+name: Deployment the frontend
 
 on: 
     push: 
@@ -29,7 +29,9 @@ jobs:
               uses: docker/build-push-action@v4
               with:
                 context: .
-                file: ./docker/Dockerfile.backend
+                file: ./docker/Dockerfile.frontend
+                build-args: |
+                  DATABASE_URL=${{ secrets.DATABASE_URL }}
                 push: true
-                tags: ${{ secrets.DOCKERHUB_USERNAME }}/todo-app-backend:${{ github.sha }}
+                tags: ${{ secrets.DOCKERHUB_USERNAME }}/todo-app-frontend:${{ github.sha }}
               
