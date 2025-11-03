@@ -4,6 +4,8 @@
 
 [CI/CD monorepo Vm Docker](https://petal-estimate-4e9.notion.site/Context-19c7dfd10735804bb438fedcd20d3628)
 
+[Devops Assignments](https://github.com/hkirat/devops-assignment)
+
 This Turborepo starter is maintained by the Turborepo core team.
 
 ## Using this example
