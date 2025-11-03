@@ -1,0 +1,4 @@
+## Build the docker code
+
+## Push the docker image to dockerhub
+## SSH into our VM and start the new image
