@@ -1,0 +1,19 @@
+FROM oven/bun:latest
+
+WORKDIR /usr/src/app
+
+COPY ./packages ./packages
+COPY ./bun.lock ./bun.lock
+
+COPY ./package.json ./package.json
+COPY ./turbo.json ./turbo.json
+
+COPY ./apps/ws ./apps/ws
+
+RUN bun install
+RUN  bun db:generate
+
+
+EXPOSE 8080
+
+CMD [ "bun" "run start:websocket" ]
