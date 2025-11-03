@@ -8,3 +8,7 @@ export default async function Home() {
   </>
 
 }
+
+export const revalidate = 60 // revalidate after 60 seconds
+//  or
+// export const dynamic = 'force-dynamic'
