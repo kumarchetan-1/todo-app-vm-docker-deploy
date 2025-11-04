@@ -5,8 +5,10 @@ WORKDIR /usr/src/app
 ARG DATABASE_URL
 ENV DATABASE_URL=${DATABASE_URL}
 ENV NODE_ENV=production
+ENV NEXT_TELEMETRY_DISABLED=1
+RUN apt-get update -y && apt-get install -y openssl && rm -rf /var/lib/apt/lists/*
 COPY ./packages ./packages
-COPY ./bun.lock ./bun.lock
+COPY ./bun.lock ./bun.lock 
 
 COPY ./package.json ./package.json
 COPY ./turbo.json ./turbo.json
@@ -14,11 +16,14 @@ COPY ./turbo.json ./turbo.json
 COPY ./apps/web ./apps/web
 
 RUN bun install
-RUN bun db:generate
+RUN bun run db:generate
+
 # Build only the web app to avoid monorepo-wide build issues
-RUN cd apps/web && bun run build
+WORKDIR /usr/src/app/apps/web
+RUN bun run build
 
 
 EXPOSE 3000
 
-CMD ["bun", "run", "start:web"]
+# Start the web app
+CMD ["bun", "run", "start"]
