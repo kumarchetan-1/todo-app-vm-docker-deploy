@@ -12,6 +12,7 @@ COPY ./apps/backend ./apps/backend
 
 RUN bun install
 RUN bun run db:generate
+RUN apt-get update -y && apt-get install -y openssl ca-certificates && rm -rf /var/lib/apt/lists/*
 
 EXPOSE 3001
 
