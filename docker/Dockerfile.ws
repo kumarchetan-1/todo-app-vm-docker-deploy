@@ -11,9 +11,9 @@ COPY ./turbo.json ./turbo.json
 COPY ./apps/ws ./apps/ws
 
 RUN bun install
-RUN  bun db:generate
+RUN bun run db:generate
 
 
 EXPOSE 8080
 
-CMD [ "bun" "run start:websocket" ]
+CMD [ "bun", "run", "start:websocket" ]
