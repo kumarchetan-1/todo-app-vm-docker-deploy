@@ -4,6 +4,7 @@ WORKDIR /usr/src/app
 
 ARG DATABASE_URL
 ENV DATABASE_URL=${DATABASE_URL}
+ENV NODE_ENV=production
 COPY ./packages ./packages
 COPY ./bun.lock ./bun.lock
 
@@ -14,7 +15,8 @@ COPY ./apps/web ./apps/web
 
 RUN bun install
 RUN bun db:generate
-RUN bun run build
+# Build only the web app to avoid monorepo-wide build issues
+RUN cd apps/web && bun run build
 
 
 EXPOSE 3000
