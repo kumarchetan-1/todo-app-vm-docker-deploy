@@ -1,5 +1,5 @@
 
-name: Deployment the backend
+name: Deployment of the backend
 
 on: 
     push: 

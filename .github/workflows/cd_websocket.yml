@@ -1,5 +1,5 @@
 
-name: Deployment the ws
+name: Deployment of the ws
 
 on: 
     push: 
