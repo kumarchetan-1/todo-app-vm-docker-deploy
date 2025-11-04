@@ -32,4 +32,10 @@ jobs:
                 file: ./docker/Dockerfile.ws
                 push: true
                 tags: ${{ secrets.DOCKERHUB_USERNAME }}/todo-app-ws:${{ github.sha }}
+
+            - run: |
+                echo "${{ secrets.SSH_PRIVATE_KEY }}" &> ~/ssh_key
+                      chmod 700 /home/runner/ssh_key
+                      ssh -o StrictHostKeyChecking=no -i ~/ssh_key root@64.227.147.124 -t "docker stop todo_websocket && docker run --name todo_websocket -d -p 8080:8080 100xdevs/todo-app-websocket:${{ github.sha }}"
+                 
               

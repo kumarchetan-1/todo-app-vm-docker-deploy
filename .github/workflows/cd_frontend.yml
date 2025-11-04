@@ -35,3 +35,9 @@ jobs:
                 push: true
                 tags: ${{ secrets.DOCKERHUB_USERNAME }}/todo-app-frontend:${{ github.sha }}
               
+            - run: |
+               echo "${{ secrets.SSH_PRIVATE_KEY }}" &> ~/ssh_key
+                  chmod 700 /home/runner/ssh_key
+                  ssh -o StrictHostKeyChecking=no -i ~/ssh_key root@64.227.147.124 -t "docker stop todo_frontend && docker run --name todo_frontend -d -p 8080:8080 100xdevs/todo-app-frontend:${{ github.sha }}"
+             
+          
