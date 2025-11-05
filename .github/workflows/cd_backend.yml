@@ -38,4 +38,5 @@ jobs:
                       chmod 700 /home/runner/ssh_key
                       ssh -o StrictHostKeyChecking=no -i ~/ssh_key ubuntu@16.171.231.129 -t "docker stop todo_backend && docker run --name todo_backend -d -p 3001:3001 100xdevs/todo-app-backend:${{ github.sha }}"
               
+
                       
