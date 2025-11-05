@@ -41,6 +41,8 @@ jobs:
                      ssh -o StrictHostKeyChecking=no -i ~/ssh_key ubuntu@16.171.231.129 \
                      -t "docker stop todo_frontend || true && \
                          docker rm todo_frontend|| true && \
-                         docker run --name todo_frontend -d -p 3000:3000 ${{ secrets.DOCKERHUB_USERNAME }}/todo-app-frontend:${{ github.sha }}"
+                         docker run --name todo_frontend -d -p 3000:3000 \
+                         -e DATABASE_URL="${{ secrets.DATABASE_URL }}" \
+                          ${{ secrets.DOCKERHUB_USERNAME }}/todo-app-frontend:${{ github.sha }}"
              
           
