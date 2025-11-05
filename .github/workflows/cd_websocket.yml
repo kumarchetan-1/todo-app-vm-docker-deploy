@@ -33,12 +33,13 @@ jobs:
                 push: true
                 tags: ${{ secrets.DOCKERHUB_USERNAME }}/todo-app-ws:${{ github.sha }}
 
-            - run: |
-                echo "${{ secrets.SSH_PRIVATE_KEY }}" &> ~/ssh_key
-                      chmod 700 /home/runner/ssh_key
-                      ssh -o StrictHostKeyChecking=no -i ~/ssh_key ubuntu@16.171.231.129 -t 
-                         "docker stop todo_websocket || true && 
-                          docker rm todo_websocket || true &&
-                          docker run --name todo_websocket -d -p 8080:8080 100xdevs/todo-app-websocket:${{ github.sha }}"
+            - name: Deploy websocket container
+              run: |
+                echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/ssh_key
+                chmod 700 ~/ssh_key
+                ssh -o StrictHostKeyChecking=no -i ~/ssh_key ubuntu@16.171.231.129 -t \
+                  "docker stop todo_websocket || true && \
+                   docker rm todo_websocket || true && \
+                   docker run --name todo_websocket -d -p 8080:8080 ${{ secrets.DOCKERHUB_USERNAME }}/todo-app-ws:${{ github.sha }}"
                  
             
