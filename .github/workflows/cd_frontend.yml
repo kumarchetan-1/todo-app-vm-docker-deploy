@@ -37,7 +37,7 @@ jobs:
               
             - run: |
                echo "${{ secrets.SSH_PRIVATE_KEY }}" &> ~/ssh_key
-                  chmod 700 /home/runner/ssh_key
-                  ssh -o StrictHostKeyChecking=no -i ~/ssh_key ubuntu@64.227.147.124 -t "docker stop todo_frontend && docker run --name todo_frontend -d -p 8080:8080 100xdevs/todo-app-frontend:${{ github.sha }}"
+                     chmod 700 /home/runner/ssh_key
+                     ssh -o StrictHostKeyChecking=no -i ~/ssh_key ubuntu@16.171.231.129 -t "docker stop todo_frontend && docker run --name todo_frontend -d -p 3000:3000 100xdevs/todo-app-frontend:${{ github.sha }}"
              
           
